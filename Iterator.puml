@@ -1,0 +1,46 @@
+@startuml
+title Iterator Pattern - Student Collection
+
+interface Iterator {
+    +boolean hasNext()
+    +Object getNext()
+}
+
+interface Aggregate {
+    +Iterator createIterator()
+}
+
+class ConcreteAggregate {
+    -List<Student> students
+    +ConcreteAggregate()
+    +void addStudent(Student student)
+    +Iterator createIterator()
+}
+
+class ConcreteIterator {
+    -List<Student> students
+    -int index
+    +ConcreteIterator(List<Student> students)
+    +boolean hasNext()
+    +Object getNext()
+    +void reset()
+    +void sortByName()
+}
+
+class Student {
+    -String name
+    -int score
+    +Student(String name, int score)
+    +String getName()
+    +int getScore()
+}
+
+class Client {
+    +main(String[] args)
+}
+
+Iterator <|.. ConcreteIterator
+Aggregate <|.. ConcreteAggregate
+
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+class Strategy.MathFunction {
+- Function<Double,Double> function
+- CoordinateSystem coordinateSystem
++ void setCoordinateSystem(CoordinateSystem)
++ void setFunction(Function<Double,Double>)
++ void displayGraph(double,double)
+}
+
+
+class Strategy.PolarCoordinateSystem {
++ void plot(Function<Double,Double>,double,double)
+}
+
+interface Strategy.CoordinateSystem {
+~ void plot(Function<Double,Double>,double,double)
+}
+
+class Strategy.Main {
++ {static} void main(String[])
+}
+
+class Strategy.CartesianCoordinateSystem {
++ void plot(Function<Double,Double>,double,double)
+}
+
+
+
+Strategy.CoordinateSystem <|.. Strategy.PolarCoordinateSystem
+Strategy.CoordinateSystem <|.. Strategy.CartesianCoordinateSystem
+@enduml
